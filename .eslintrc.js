@@ -5,6 +5,7 @@ module.exports = {
     },
     "overrides": [
       {
+        "files": [],
         "excludedFiles": "*.test.js",
       }
     ]
