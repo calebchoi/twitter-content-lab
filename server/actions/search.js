@@ -1,5 +1,6 @@
 const Twitter = require('twitter');
 const dotenv = require('dotenv');
+const util = require('util');
 
 dotenv.config();
 
@@ -14,10 +15,14 @@ module.exports = {
   get: (req, res) => {
     let params = {
       q: '#warriors #curry',
-      count: 1
+      count: '5'
     };
     client.get('search/tweets', params, (error, tweets, response) => {
-      console.log(JSON.stringify(tweets));
+      if (error) {
+        throw new Error('Error in API call');
+      } else {
+        console.log(util.inspect(tweets.statuses, false, null));
+      }
     });
   }
 }
