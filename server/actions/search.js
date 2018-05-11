@@ -1,6 +1,5 @@
 const Twitter = require('twitter');
 const dotenv = require('dotenv');
-const util = require('util');
 
 dotenv.config();
 
@@ -21,7 +20,7 @@ module.exports = {
       if (error) {
         throw new Error('Error in API call');
       } else {
-        console.log(util.inspect(tweets.statuses, false, null));
+        res.send(JSON.stringify(tweets.statuses));
       }
     });
   }
