@@ -11,17 +11,20 @@ class TweetList extends React.Component {
     };
   }
 
+  // update state when receiving new props with updated values
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.tweets !== nextProps.tweets) {
       let newTweets = TweetList.sortTweets(prevState.sortBy, nextProps.tweets);
       return {
-        tweets: nextProps.tweets
+        tweets: newTweets
       };
     } else {
       return null;
     }
   }
 
+  // sort tweets based on the sort option selected
+  // options: favorites, retweets, or recent
   static sortTweets(sortOption, prev_tweets) {
     let tweets = prev_tweets.slice();
     if (sortOption === 'favorites') {
@@ -40,6 +43,7 @@ class TweetList extends React.Component {
     return tweets;
   }
 
+  // update state when new option is selected
   handleChange = (e) => {
     let tweets = TweetList.sortTweets(e.target.value, this.state.tweets);
     this.setState({
@@ -52,7 +56,7 @@ class TweetList extends React.Component {
     return (
       <div className="tweetList">
         <div className="tweetListHeader row">
-          <h3 className="col-md-9">Tweets:</h3>
+          <h3 className="col-md-9"><strong>Tweets:</strong></h3>
           <div className="sortOption col-md-3">
             <select className="form-control" id="sortBy" onChange={this.handleChange}>
               <option value="favorites">Most Favorited</option>
