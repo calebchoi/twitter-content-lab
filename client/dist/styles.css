@@ -5,6 +5,7 @@ html, body {
 
 .top-container {
   background-color: white;
+  border-bottom: 1px solid gray;
 }
 
 .searchMenu {
@@ -23,7 +24,6 @@ html, body {
   padding: 2% 10% 2% 10%;
   background-color: #f2f2f2;
   background-size: 100% 100%;
-  border-top: 3px inset #888888;
   min-height: 100%
 }
 
@@ -37,4 +37,8 @@ html, body {
 
 .title {
   padding: 30px;
+}
+
+.twitter-bird {
+  height: 50px;
 }
