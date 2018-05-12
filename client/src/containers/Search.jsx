@@ -11,14 +11,19 @@ class Search extends React.Component {
     };
   }
 
+  // handle changes to any of the input areas
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
     });
   }
 
+  // handle submitting a search query
   handleSubmit = (e) => {
+    // prevent form from submitting and reloading page
     e.preventDefault();
+    // if hashtag input is valid
+      // call searchTweets function passed as props with the query
     if (this.isHashtagValid(this.state.hashtag)) {
       this.props.searchTweets(this.state.hashtag, this.state.resultCount, this.state.resultType);
     } else {
@@ -31,11 +36,12 @@ class Search extends React.Component {
     let hashtagArr = hashtag.split(' ');
 
     for (let i = 0; i < hashtagArr.length; i++) {
-      // if the first character is not a pound sign, it's not a hashtag
+      // hashtag must be longer than 1 character or must start with #
       if (hashtagArr[i].length <= 1 || hashtagArr[i][0] !== '#') {
         return false;
       }
 
+      // take out # to evaluate the value
       let value = hashtagArr[i].slice(1);
 
       // not valid if hashtag contains special characters

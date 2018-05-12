@@ -21,7 +21,7 @@ module.exports = {
 
     client.get('search/tweets', params, (error, tweets, response) => {
       if (error) {
-        throw new Error('Error in API call');
+        console.log('Error in API call');
       } else {
         res.send(tweets.statuses);
       }
