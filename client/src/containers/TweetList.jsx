@@ -77,4 +77,8 @@ class TweetList extends React.Component {
   }
 }
 
+TweetList.propTypes = {
+  tweets: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 export default TweetList;

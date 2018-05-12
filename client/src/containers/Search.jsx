@@ -104,4 +104,8 @@ class Search extends React.Component {
   }
 }
 
+Search.propTypes = {
+  searchTweets: PropTypes.func.isRequired,
+};
+
 export default Search;

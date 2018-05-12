@@ -14,4 +14,8 @@ const Tweet = props => (
   </div>
 );
 
+Tweet.propTypes = {
+  tweet: PropTypes.object.isRequired,
+};
+
 export default Tweet;
