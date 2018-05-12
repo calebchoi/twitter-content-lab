@@ -1,20 +1,40 @@
+html, body {
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
+.top-container {
+  background-color: white;
+}
+
 .searchMenu {
-  margin-left: 10%;
-  margin-right: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
   overflow: auto;
 }
 
 .btn {
   float: right;
   margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .tweetList {
-  margin: 2% 10% 2% 10%;
+  padding: 2% 10% 2% 10%;
+  background-color: #f2f2f2;
+  background-size: 100% 100%;
+  border-top: 3px inset #888888;
+  min-height: 100%
 }
 
 .tweet {
-  border: 2px solid #ccced1;
+  border: 2px solid #bfe2fc;
   padding: 2%;
   margin: 5px 0 5px 0;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title {
+  padding: 30px;
 }
