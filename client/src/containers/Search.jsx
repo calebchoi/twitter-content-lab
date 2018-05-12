@@ -18,13 +18,43 @@ class Search extends React.Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
+    if (this.isHashtagValid(this.state.hashtag)) {
+      // call the search function passed as prop
+      console.log('valid input');
+    } else {
+      alert('One or more hashtag input(s) invalid!');
+    }
+  }
+  
+  // check if hashtags in input are valid
+  isHashtagValid = (hashtag) => {
+    let hashtagArr = hashtag.split(' ');
 
+    for (let i = 0; i < hashtagArr.length; i++) {
+      // if the first character is not a pound sign, it's not a hashtag
+      if (hashtagArr[i].length <= 1 || hashtagArr[i][0] !== '#') {
+        return false;
+      }
+
+      let value = hashtagArr[i].slice(1);
+
+      // not valid if hashtag contains special characters
+      // not valid if hashtag starts
+      if (/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(value)) {
+        return false;
+      } else if (/[0-9]/g.test(value[0])) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   render() {
     return (
       <div className="searchMenu justify-content-center">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-row">
             <div className="col-md-4">
               <label>Hashtags</label>
