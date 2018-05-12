@@ -53,7 +53,7 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="searchMenu justify-content-center">
+      <div className="searchMenu">
         <form onSubmit={this.handleSubmit}>
           <div className="form-row">
             <div className="col-md-4">
