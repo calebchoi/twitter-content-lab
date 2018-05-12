@@ -3,18 +3,26 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Search from './containers/Search.jsx';
 import TweetList from './containers/TweetList.jsx';
-import testData from '../../server/testData.js';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      tweets: testData.tweets,
+      tweets: [],
     };
   }
 
-  searchTweets = () => {
-
+  searchTweets = (hashtags, resultCount, resultType) => {
+    let body = { params: { hashtags, resultCount, resultType } };
+    axios.get('/search', body)
+      .then(results => {
+        this.setState({
+          tweets: results.data,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -24,7 +32,7 @@ class App extends React.Component {
         <Search searchTweets={this.searchTweets} />
         <TweetList tweets={this.state.tweets} />
       </div>
-    )
+    );
   }
 }
 
