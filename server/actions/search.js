@@ -12,15 +12,18 @@ const client = new Twitter({
 
 module.exports = {
   get: (req, res) => {
+    const { hashtags, resultCount, resultType } = req.query;
     let params = {
-      q: '#warriors #curry',
-      count: '5'
+      q: hashtags,
+      count: resultCount,
+      resultType: resultType
     };
+
     client.get('search/tweets', params, (error, tweets, response) => {
       if (error) {
         throw new Error('Error in API call');
       } else {
-        res.send(JSON.stringify(tweets.statuses));
+        res.send(tweets.statuses);
       }
     });
   }
