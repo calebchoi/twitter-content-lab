@@ -5,22 +5,24 @@ import Tweet from '../presentational/Tweet.jsx';
 class TweetList extends React.Component {
   constructor(props) {
     super(props);
-    let tweets = this.sortTweets('favorites', this.props.tweets);
     this.state = {
-      tweets: tweets,
+      tweets: [],
       sortBy: 'favorites'
     };
   }
 
-  handleChange = (e) => {
-    let tweets = this.sortTweets(e.target.value, this.state.tweets);
-    this.setState({
-      tweets: tweets,
-      sortBy: e.target.value
-    });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.tweets !== nextProps.tweets) {
+      let newTweets = TweetList.sortTweets(prevState.sortBy, nextProps.tweets);
+      return {
+        tweets: nextProps.tweets
+      };
+    } else {
+      return null;
+    }
   }
 
-  sortTweets = (sortOption, prev_tweets) => {
+  static sortTweets(sortOption, prev_tweets) {
     let tweets = prev_tweets.slice();
     if (sortOption === 'favorites') {
       tweets.sort((a, b) => {
@@ -36,6 +38,14 @@ class TweetList extends React.Component {
       });
     }
     return tweets;
+  }
+
+  handleChange = (e) => {
+    let tweets = TweetList.sortTweets(e.target.value, this.state.tweets);
+    this.setState({
+      tweets: tweets,
+      sortBy: e.target.value
+    });
   }
 
   render() {
