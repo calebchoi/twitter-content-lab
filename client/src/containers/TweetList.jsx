@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tweet from '../presentational/Tweet.jsx';
 
+// TweetList component displays a list of Tweet components and handles changes to sort options
 class TweetList extends React.Component {
   constructor(props) {
     super(props);

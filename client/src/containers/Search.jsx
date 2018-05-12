@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Search component builds the search menu and handles input changes/submit
 class Search extends React.Component {
   constructor() {
     super();

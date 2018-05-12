@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Tweet component builds the display for individual tweet with the metadata from tweet object
 const Tweet = props => (
   <div className="tweet">
     <h5>
