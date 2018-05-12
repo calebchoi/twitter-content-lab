@@ -20,8 +20,7 @@ class Search extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.isHashtagValid(this.state.hashtag)) {
-      // call the search function passed as prop
-      console.log('valid input');
+      this.props.searchTweets(this.state.hashtag, this.state.resultCount, this.state.resultType);
     } else {
       alert('One or more hashtag input(s) invalid!');
     }
