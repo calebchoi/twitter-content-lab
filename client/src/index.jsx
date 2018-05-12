@@ -12,6 +12,7 @@ class App extends React.Component {
     };
   }
 
+  // makes a get request to the server with the specified query from the search menu
   searchTweets = (hashtags, resultCount, resultType) => {
     let body = { params: { hashtags, resultCount, resultType } };
     axios.get('/search', body)
@@ -28,8 +29,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-container">
-        <h1>Twitter Content Lab</h1>
-        <Search searchTweets={this.searchTweets} />
+        <div className="top-container">
+          <div className="title row justify-content-center">
+            <img src="/assets/twitter-bird.png" alt="twitter bird" className="img twitter-bird" /> &nbsp;
+            <h1><strong>Twitter Content Lab</strong></h1>
+          </div>
+          <Search searchTweets={this.searchTweets} />
+        </div>
         <TweetList tweets={this.state.tweets} />
       </div>
     );
