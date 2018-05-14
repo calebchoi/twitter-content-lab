@@ -12,6 +12,8 @@ const component = shallow(
     <Search searchTweets={searchTweets}/>
   );
 
+// sample tests of the Search component
+
 test('test initial states of the Search component' , () => {
   expect(component.state('hashtag')).toEqual('');
   expect(component.state('resultCount')).toEqual(null);
